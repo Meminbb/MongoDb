@@ -63,6 +63,30 @@ router.post("/", async (req, res) => {
   });
 });
 
+// =====================
+// UPDATE SALE
+// =====================
+router.put("/:id", async (req, res) => {
+
+  const db = await connectDB();
+
+  const id = parseInt(req.params.id);
+
+  await db.collection("sales").updateOne(
+
+    { _id: id },
+
+    {
+      $set: req.body
+    }
+
+  );
+
+  res.json({
+    message: "Sale updated"
+  });
+});
+
 
 // =====================
 // DELETE SALE

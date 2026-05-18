@@ -48,6 +48,16 @@ async function loadSales() {
         <td>
 
           <button
+            class="btn btn-primary btn-sm"
+            onclick="editSale(
+              ${sale._id},
+              ${sale.price}
+            )"
+          >
+            Edit
+          </button>
+
+          <button
             class="btn btn-danger btn-sm"
             onclick="deleteSale(${sale._id})"
           >
@@ -61,6 +71,31 @@ async function loadSales() {
   });
 }
 
+async function editSale(id, currentPrice) {
+
+  const price = parseFloat(
+    prompt("New price:", currentPrice)
+  );
+
+  if (!price) return;
+
+  await fetch(`${API_SALES}/${id}`, {
+
+    method: "PUT",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      price,
+      final_price: price
+    })
+
+  });
+
+  loadSales();
+}
 
 // LOAD CUSTOMERS SELECT
 async function loadCustomersSelect() {
@@ -227,6 +262,18 @@ async function loadCustomers() {
         <td>
 
           <button
+            class="btn btn-primary btn-sm"
+            onclick="editCustomer(
+              ${customer._id},
+              '${customer.first_name}',
+              '${customer.last_name}',
+              '${customer.email}'
+            )"
+          >
+            Edit
+          </button>
+
+          <button
             class="btn btn-danger btn-sm"
             onclick="deleteCustomer(${customer._id})"
           >
@@ -240,6 +287,48 @@ async function loadCustomers() {
   });
 }
 
+async function editCustomer(
+  id,
+  currentFirst,
+  currentLast,
+  currentEmail
+) {
+
+  const first_name = prompt(
+    "First name:",
+    currentFirst
+  );
+
+  if (!first_name) return;
+
+  const last_name = prompt(
+    "Last name:",
+    currentLast
+  );
+
+  const email = prompt(
+    "Email:",
+    currentEmail
+  );
+
+  await fetch(`${API_CUSTOMERS}/${id}`, {
+
+    method: "PUT",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      email
+    })
+
+  });
+
+  loadCustomers();
+}
 
 async function createCustomer() {
 
@@ -327,16 +416,51 @@ async function loadGenres() {
         <td>${g.name}</td>
 
         <td>
+
+          <button
+            class="btn btn-primary btn-sm"
+            onclick="editGenre(${g._id}, '${g.name}')"
+          >
+            Edit
+          </button>
+
           <button
             class="btn btn-danger btn-sm"
             onclick="deleteGenre(${g._id}, '${g.name}')"
           >
             Delete
           </button>
+
         </td>
       </tr>
     `;
   });
+}
+
+async function editGenre(id, currentName) {
+
+  const newName = prompt(
+    "New genre name:",
+    currentName
+  );
+
+  if (!newName) return;
+
+  await fetch(`${API_GENRES}/${id}`, {
+
+    method: "PUT",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      name: newName
+    })
+
+  });
+
+  loadGenres();
 }
 
 
@@ -398,18 +522,67 @@ async function loadMovies() {
         <td>${movie.genres.join(", ")}</td>
 
         <td>
+
+          <button
+            class="btn btn-primary btn-sm"
+            onclick="editMovie(
+              ${movie._id},
+              '${movie.title}',
+              ${movie.year},
+              ${movie.list_price}
+            )"
+          >
+            Edit
+          </button>
+
           <button
             class="btn btn-danger btn-sm"
             onclick="deleteMovie(${movie._id})"
           >
             Delete
           </button>
+
         </td>
       </tr>
     `;
   });
 }
 
+async function editMovie(id, currentTitle, currentYear, currentPrice) {
+
+  const title = prompt(
+    "Movie title:",
+    currentTitle
+  );
+
+  if (!title) return;
+
+  const year = parseInt(
+    prompt("Movie year:", currentYear)
+  );
+
+  const list_price = parseFloat(
+    prompt("Movie price:", currentPrice)
+  );
+
+  await fetch(`${API_MOVIES}/${id}`, {
+
+    method: "PUT",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      title,
+      year,
+      list_price
+    })
+
+  });
+
+  loadMovies();
+}
 
 async function loadGenresSelect() {
   const res = await fetch(API_GENRES);
