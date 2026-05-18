@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Mac
+.AppleDouble
+.LSOverride
+
+# Build / cache
+dist/
+build/
+.cache/
+
+# Coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Optional npm cache
+.npm
+
+# Yarn
+.yarn/
+
+# pnpm
+.pnpm-store/
