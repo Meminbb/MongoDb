@@ -1,182 +1,126 @@
-# MovieStream MongoDB App
+Aplicación MongoDB de MovieStream
 
-## Overview
+Descripción general
 
-MovieStream is a simple CRUD web application built with MongoDB and Node.js.
+MovieStream es una aplicación web CRUD simple creada con MongoDB y Node.js.
 
-The project redesigns a relational movie streaming database into a MongoDB document model and provides a web interface to interact with the data.
+El proyecto rediseña una base de datos de transmisión de películas relacionales en un modelo de documento MongoDB y proporciona una interfaz web para interactuar con los datos.
 
-The app supports:
-- Movies
-- Genres
-- Customers
-- Sales
+La aplicación admite:
+- Películas
+- Géneros
+- Clientes
+- Ventas
 
----
+Características
 
-# Features
+Películas
+- Lista de películas
+- Buscar películas
+- Crea peliculas
+- Editar películas
+- Eliminar películas
 
-## Movies
-- List movies
-- Search movies
-- Create movies
-- Edit movies
-- Delete movies
+Géneros
+- Lista de géneros
+- Crear géneros
+- Eliminar géneros
+- Evitar la eliminación si las películas hacen referencia a ellas
 
-## Genres
-- List genres
-- Create genres
-- Delete genres
-- Prevent deletion if referenced by movies
+Clientes
+- Listar clientes
+- Buscar clientes
+- Crear clientes
+- Eliminar clientes
 
-## Customers
-- List customers
-- Search customers
-- Create customers
-- Delete customers
+Ventas
+- Listar ventas
+- Crear ventas
+- Eliminar ventas
+- Mostrar información relacionada con el cliente y la película
 
-## Sales
-- List sales
-- Create sales
-- Delete sales
-- Show related customer and movie information
+Stack utilizada
 
----
-
-# Stack Used
-
-## Backend
-- Node.js
+Backend
+- Nodoe.js
 - Express.js
-- MongoDB Driver
+- MongoDB
 
-## Database
-- MongoDB Atlas
+Base de datos
+- Atlas de MongoDB
 
-## Frontend
+Frontend
 - HTML
 - Bootstrap
-- Vanilla JavaScript
+- JavaScript
 
----
-
-# Project Structure
+Estructura del proyecto
 
 ```bash
-moviestream-app/
+aplicación moviestream/
 │
-├── server.js
-├── seed.js
-├── package.json
+├── servidor.js
+├── semilla.js
+├── paquete.json
 ├── .env
 │
 ├── db/
-│   └── mongo.js
+│ └── mongo.js
 │
-├── routes/
-│   ├── movies.js
-│   ├── genres.js
-│   ├── customers.js
-│   └── sales.js
+├── rutas/
+│ ├── películas.js
+│ ├── géneros.js
+│ ├── clientes.js
+│ └── ventas.js
 │
 └── public/
     ├── index.html
-    ├── movies.html
-    ├── genres.html
-    ├── customers.html
-    ├── sales.html
+    ├── películas.html
+    ├── géneros.html
+    ├── clientes.html
+    ├── ventas.html
     └── app.js
 ```
+Instalación
 
----
-
-# Installation
-
-## 1. Clone repository
+1. Clonar repositorio
+2. Instalar dependencias
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+instalación de npm
 ```
+3. Configurar variables de entorno
 
----
-
-## 2. Install dependencies
-
-```bash
-npm install
-```
-
----
-
-## 3. Configure environment variables
-
-Create a `.env` file:
+Crea un archivo `.env`:
 
 ```env
-MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
-PORT=3000
+MONGO_URI=mongodb://a00838335_db_user:A00838335@ac-8skmtgt-shard-00-00.i5ew2fl.mongodb.net:27017,ac-8skmtgt-shard-00-01.i5ew2fl.mongodb.net:27017,ac-8skmtgt-shard-00-02.i5ew2fl.mongodb.net:27017/?ssl=true&replicaSet=atlas-2jb870-shard-0&authSource=admin&appName=Cluster0
 ```
 
----
-
-## 4. Seed database
+4. Base de datos seed
 
 ```bash
 node seed.js
 ```
 
----
-
-## 5. Start application
+5. Iniciar aplicación
 
 ```bash
 npm start
 ```
 
----
-
-# Open in Browser
-
-```txt
+Abrir en el navegador
 http://localhost:3000
-```
 
----
-
-# Deployment
-
-The application is deployed using Render and MongoDB Atlas.
-
-Public URL:
+URL pública:
 
 ```txt
-PASTE_DEPLOYMENT_URL_HERE
+https://mongodb-9wpd.onrender.com
 ```
+¿Por qué esta pila?
 
----
-
-# Screenshots
-
-## Dashboard
-
-(Add screenshot here)
-
-## Movies Page
-
-(Add screenshot here)
-
-## Customers Page
-
-(Add screenshot here)
-
----
-
-# Why This Stack?
-
-This stack was selected because:
-- Express is lightweight and easy to integrate with MongoDB
-- MongoDB Atlas provides free cloud hosting
-- Vanilla JavaScript keeps the frontend simple
-- Bootstrap speeds up UI development
-
-The goal of the project was functionality and database interaction rather than frontend complexity.
+Esta pila fue seleccionada porque:
+- Express es liviano y fácil de integrar con MongoDB
+- MongoDB Atlas ofrece alojamiento gratuito en la nube
+- Vanilla JavaScript mantiene la interfaz simple
+- Bootstrap acelera el desarrollo de UI
